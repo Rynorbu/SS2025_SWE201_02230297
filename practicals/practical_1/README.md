@@ -1,50 +1,66 @@
-# Welcome to your Expo app 👋
+## Gojek App Clone
+### Overview
+This repository contains a Gojek app clone built using React Native with Expo framework. The application replicates core functionalities of the Gojek app, including user onboarding, and service browsing.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Features
 
-## Get started
+- Interactive onboarding carousel with paginated image slides
+- User authentication system with OTP verification
+- Country code selection interface
+- Navigation between different screens and components
+- Responsive UI design adapting to various device dimensions
 
-1. Install dependencies
+### Technologies Used
 
-   ```bash
+- React Native: Core framework for cross-platform mobile development
+- Expo: Development environment and build tools
+- React Navigation: Navigation library for screen transitions
+- React Native Country Picker Modal: Component for country code selection
+- React Native Confirmation Code Field: Component for OTP input
+- ScrollView with Ref: Implementation for carousel functionality
+
+### Implementation Details
+### Onboarding Carousel
+
+The app implements a smooth image carousel in the onboarding screen using:
+
+- React's useRef hook to maintain a reference to the ScrollView
+- ScrollView with pagination and snap functionality
+- Dynamic indicator dots that highlight the current slide
+- Precise centering of images with snap alignment and interval controls
+
+### Navigation
+Screen transitions are managed through:
+
+- React Navigation's navigation hooks
+
+### UI Components
+Custom-built UI components include:
+
+- Styled buttons with different visual states
+- Interactive carousel indicators
+- Form input fields with validation
+- Modal dialogs for country selection
+
+### Setup and Installation
+
+1. Clone the repository
+
+2. Install dependencies:
+
    npm install
-   ```
 
-2. Start the app
+3. Start the development server:
 
-   ```bash
-   ```
+   npx expo start
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Dependencies installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. react-native-confirmation-code-field
 
-## Get a fresh project
+   `npm install react-native-confirmation-code-field `
 
-When you're ready, run:
+2. react-native-country-picker-modal
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-    npx expo start
+   `npm install react-native-phone-input react-native-country-picker-modal`
