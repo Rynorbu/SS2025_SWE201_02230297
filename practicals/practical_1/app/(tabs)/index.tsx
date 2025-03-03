@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   slide: {
-    width: screenWidth,
+    width: 310,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
