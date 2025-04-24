@@ -1,26 +1,29 @@
+// screens/LandingScreen.tsx
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { FontAwesome, MaterialIcons, Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 export default function LandingScreen() {
+  const navigation = useNavigation();
+
   return (
-    <LinearGradient
-      colors={['#e0eafc', '#cfdef3']}
-      style={styles.container}
-    >
-      <StatusBar barStyle="dark-content" />
-      <Text style={styles.title}>Welcome to MyApp</Text>
+    <LinearGradient colors={['#e0eafc', '#cfdef3']} style={styles.container}>
+      <Text style={styles.title}>Let’s Get You Logged In</Text>
       <Text style={styles.subtitle}>Choose a login method</Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('EmailPasswordLogin')}
+      >
         <MaterialIcons name="email" size={20} color="#fff" />
         <Text style={styles.buttonText}>Login with Email</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button}>
         <Entypo name="link" size={20} color="#fff" />
-        <Text style={styles.buttonText}>Login with Magic Link</Text>
+        <Text style={styles.buttonText}>Magic Link</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.button, styles.google]}>
@@ -30,7 +33,7 @@ export default function LandingScreen() {
 
       <TouchableOpacity style={styles.button}>
         <MaterialIcons name="sms" size={20} color="#fff" />
-        <Text style={styles.buttonText}>Login with Phone (SMS)</Text>
+        <Text style={styles.buttonText}>Login with SMS</Text>
       </TouchableOpacity>
     </LinearGradient>
   );
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     paddingHorizontal: 30,
     alignItems: 'center',
-    justifyContent: 'flex-start',
   },
   title: {
     fontSize: 32,
