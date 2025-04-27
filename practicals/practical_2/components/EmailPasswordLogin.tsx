@@ -1,3 +1,4 @@
+// screens/EmailPasswordLogin.tsx
 import React, { useState } from 'react';
 import {
   Alert,
@@ -11,8 +12,9 @@ import {
 import { supabase } from '../lib/supabase';
 import { useNavigation } from '@react-navigation/native';
 
+
 export default function EmailPasswordLogin() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,7 +26,12 @@ export default function EmailPasswordLogin() {
       password,
     });
     setLoading(false);
-    if (error) Alert.alert('Login Failed', error.message);
+    if (error) {
+      console.log('Login Error:', error.message);
+      Alert.alert('Login Failed', error.message);
+    } else {
+      Alert.alert('Login Successful!');
+    }
   };
 
   const signUpWithEmail = async () => {
@@ -34,8 +41,13 @@ export default function EmailPasswordLogin() {
       password,
     });
     setLoading(false);
-    if (error) Alert.alert('Sign Up Failed', error.message);
-    else Alert.alert('Check your email to confirm your account!');
+    if (error) {
+      console.log('Sign Up Error:', error.message);
+      Alert.alert('Sign Up Failed', error.message);
+    } else {
+      console.log('Sign Up Data:', data);
+      Alert.alert('Check your email to confirm your account!');
+    }
   };
 
   return (
@@ -43,7 +55,7 @@ export default function EmailPasswordLogin() {
       <Text style={styles.title}>Log in with Email</Text>
 
       <TextInput
-        placeholder="Email"
+        placeholder="Enter your email"
         style={styles.input}
         autoCapitalize="none"
         keyboardType="email-address"
@@ -52,7 +64,7 @@ export default function EmailPasswordLogin() {
       />
 
       <TextInput
-        placeholder="Password"
+        placeholder="Enter your password"
         style={styles.input}
         autoCapitalize="none"
         secureTextEntry
@@ -134,7 +146,7 @@ const styles = StyleSheet.create({
   },
   backText: {
     marginTop: 16,
-    color: '#6b7280',
+    color: '#0A84FF',
     fontSize: 16,
   },
 });

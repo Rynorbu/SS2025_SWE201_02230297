@@ -6,11 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 export default function LandingScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>(); 
 
   return (
     <LinearGradient colors={['#e0eafc', '#cfdef3']} style={styles.container}>
-      <Text style={styles.title}>Let’s Get You Logged In</Text>
+      <Text style={styles.title}>Welcome to my app</Text>
       <Text style={styles.subtitle}>Choose a login method</Text>
 
       <TouchableOpacity
@@ -18,10 +18,13 @@ export default function LandingScreen() {
         onPress={() => navigation.navigate('EmailPasswordLogin')}
       >
         <MaterialIcons name="email" size={20} color="#fff" />
-        <Text style={styles.buttonText}>Login with Email</Text>
+        <Text style={styles.buttonText}>Log in with Email</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={() => navigation.navigate('MagicLinkLogin')}
+      >
         <Entypo name="link" size={20} color="#fff" />
         <Text style={styles.buttonText}>Magic Link</Text>
       </TouchableOpacity>
