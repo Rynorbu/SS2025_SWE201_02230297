@@ -1,6 +1,5 @@
 ## Practical report 
 
-
 ### Initialize the Project
 
 Create a new Expo app using the TypeScript template:
