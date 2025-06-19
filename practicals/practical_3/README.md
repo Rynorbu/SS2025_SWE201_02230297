@@ -1,50 +1,131 @@
-# Welcome to your Expo app 👋
+# Todo Notes App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+The **Todo Notes App** is a task management application that allows users to create, update, delete, and manage their tasks. It includes features such as setting due dates for tasks and marking tasks as completed. The app is built using **React Native** and integrates with **Firebase Firestore** for data persistence.
 
-1. Install dependencies
+## Features
 
+1. **Add Tasks**:
+   - Users can add new tasks by entering a title and optionally setting a due date.
+   - Tasks are saved to Firebase Firestore.
+
+2. **View Tasks**:
+   - All tasks are displayed in a list format.
+   - Tasks are categorized as completed or pending based on their status.
+
+3. **Edit Tasks**:
+   - Users can edit the title and due date of existing tasks.
+   - Changes are updated in real-time in Firebase Firestore.
+
+4. **Mark Tasks as Completed**:
+   - Users can toggle the completion status of tasks by clicking on the checkbox.
+
+5. **Delete Tasks**:
+   - Users can delete tasks, which removes them permanently from Firebase Firestore.
+
+6. **Set Due Dates**:
+   - Users can set or update due dates for tasks using a date picker.
+
+7. **Responsive UI**:
+   - The app is designed with a clean and modern UI, ensuring a smooth user experience.
+
+## File Structure
+
+### 1. **Persistence Layer (`persistence/TodoPersistence.ts`)**
+   - Handles all interactions with Firebase Firestore.
+   - Functions:
+     - `fetchTodosFromDB`: Fetches all tasks from Firestore.
+     - `addTodoToDB`: Adds a new task to Firestore.
+     - `updateTodoInDB`: Updates an existing task in Firestore.
+     - `deleteTodoFromDB`: Deletes a task from Firestore.
+
+### 2. **Business Logic Layer (`businessLogic/Todo.ts`)**
+   - Defines the `Todo` interface, which represents the structure of a task.
+   - Includes validation logic for task titles.
+
+### 3. **Service Layer (`service/TodoService.ts`)**
+   - Acts as a bridge between the UI and the persistence layer.
+   - Manages the state of tasks and provides functions for adding, updating, and deleting tasks.
+
+### 4. **UI Layer (`app/Notes.tsx`)**
+   - The main user interface of the app.
+   - Features:
+     - Displays a list of tasks.
+     - Provides input fields for adding and editing tasks.
+     - Integrates the `DatePicker` component for setting due dates.
+
+### 5. **Reusable Components**
+   - **DatePicker (`components/DatePicker.tsx`)**:
+     - A reusable component for selecting dates.
+     - Supports both web and native platforms.
+
+## How It Works
+
+1. **Landing Page**:
+   - The `Notes.tsx` file serves as the landing page of the app.
+   - It displays the list of tasks and provides options to add, edit, or delete tasks.
+
+2. **Adding a Task**:
+   - Users can enter a task title and optionally set a due date.
+   - Clicking the "Add" button saves the task to Firestore.
+
+3. **Editing a Task**:
+   - Users can click the edit icon next to a task to modify its title or due date.
+   - Changes are saved to Firestore in real-time.
+
+4. **Marking a Task as Completed**:
+   - Clicking the checkbox toggles the completion status of a task.
+
+5. **Deleting a Task**:
+   - Clicking the delete icon removes the task permanently.
+
+## Technologies Used
+
+- **React Native**: For building the user interface.
+- **Firebase Firestore**: For real-time data storage and synchronization.
+- **Expo**: For simplifying the development and testing process.
+- **TypeScript**: For type safety and better code maintainability.
+
+## How to Run the App
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Start the development server:
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+4. Open the app:
+   - Use the Expo Go app on your mobile device to scan the QR code.
+   - Alternatively, run the app on an emulator or simulator.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Screenshots
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 1. Task List
+![Task List](list.png)
 
-## Get a fresh project
+### 2. Add Task
+![Add Task](\assets\images\add-task.png)
 
-When you're ready, run:
+### 3. Edit Task
+![Edit Task](\assets\images\edit-task.png)
 
-```bash
-npm run reset-project
-```
+## Future Enhancements
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Add support for task prioritization.
+- Implement notifications for tasks with upcoming due dates.
+- Add user authentication for personalized task management.
 
-## Learn more
+## Conclusion
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The Todo Notes App is a simple yet powerful task management tool. It demonstrates the use of React Native, Firebase, and TypeScript to build a responsive and feature-rich application. Let me know if you have any questions or need further assistance!
