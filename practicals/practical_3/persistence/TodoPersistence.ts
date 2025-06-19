@@ -22,19 +22,28 @@ export const fetchTodosFromDB = async (): Promise<Todo[]> => {
   }
 };
 
-export const addTodoToDB = async (title: string): Promise<Todo> => {
+export const addTodoToDB = async (title: string, dueDate: Date | null): Promise<Todo> => {
   try {
-    const docRef = await addDoc(todoCollection, { title, done: false });
-    return { id: docRef.id, title, done: false };
+    const docRef = await addDoc(todoCollection, {
+      title,
+      done: false,
+      dueDate: dueDate ? dueDate.toISOString() : null, // Ensure dueDate is either a string or null
+    });
+    return { id: docRef.id, title, done: false, dueDate: dueDate ? dueDate.toISOString() : undefined };
   } catch (error) {
     console.error('Error adding todo to DB:', error);
     throw error;
   }
 };
+
 export const updateTodoInDB = async (id: string, updates: Partial<Todo>): Promise<Todo> => {
   try {
     const todoRef = doc(FIRESTORE_DB, `todos/${id}`);
-    await updateDoc(todoRef, updates);
+    const sanitizedUpdates = {
+      ...updates,
+      dueDate: updates.dueDate ? updates.dueDate : null, // Ensure dueDate is either a string or null
+    };
+    await updateDoc(todoRef, sanitizedUpdates);
     const updatedDoc = await getDoc(todoRef);
     return { id, ...(updatedDoc.data() as Omit<Todo, 'id'>) } as Todo;
   } catch (error) {
