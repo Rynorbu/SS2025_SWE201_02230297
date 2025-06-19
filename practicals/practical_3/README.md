@@ -4,7 +4,7 @@
 
 The **Todo Notes App** is a task management application that allows users to create, update, delete, and manage their tasks efficiently. It includes features such as setting due dates for tasks, marking tasks as completed, and editing tasks. The app is built using **React Native** and integrates with **Firebase Firestore** for real-time data persistence.
 
-## Features
+## Feature
 
 1. **Add Tasks**:
    - Users can add new tasks by entering a title and optionally setting a due date.

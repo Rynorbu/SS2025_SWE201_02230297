@@ -27,7 +27,7 @@ export const addTodoToDB = async (title: string, dueDate: Date | null): Promise<
     const docRef = await addDoc(todoCollection, {
       title,
       done: false,
-      dueDate: dueDate ? dueDate.toISOString() : null, // Ensure dueDate is either a string or null
+      dueDate: dueDate ? dueDate.toISOString() : null, 
     });
     return { id: docRef.id, title, done: false, dueDate: dueDate ? dueDate.toISOString() : undefined };
   } catch (error) {
@@ -41,7 +41,7 @@ export const updateTodoInDB = async (id: string, updates: Partial<Todo>): Promis
     const todoRef = doc(FIRESTORE_DB, `todos/${id}`);
     const sanitizedUpdates = {
       ...updates,
-      dueDate: updates.dueDate ? updates.dueDate : null, // Ensure dueDate is either a string or null
+      dueDate: updates.dueDate ? updates.dueDate : null, 
     };
     await updateDoc(todoRef, sanitizedUpdates);
     const updatedDoc = await getDoc(todoRef);

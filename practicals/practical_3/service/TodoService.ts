@@ -28,7 +28,7 @@ export const useTodoService = () => {
   const addTodo = async (title: string, dueDate: Date | null) => {
     if (!title.trim()) return;
     try {
-      await addTodoToDB(title, dueDate || null); // Ensure dueDate is either a valid date or null
+      await addTodoToDB(title, dueDate || null); 
     } catch (error) {
       console.error('Error adding todo:', error);
     }
